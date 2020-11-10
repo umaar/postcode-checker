@@ -1,0 +1,25 @@
+{
+  "name": "postcode-checker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "npm run lint && npm run test:integration",
+    "test:integration": "echo 'no tests'",
+    "lint": "./node_modules/.bin/xo",
+    "start": "node src/server/index.js"
+  },
+  "author": "Umar Hansa",
+  "xo": {
+    "extends": "./node_modules/@umaar/personal-eslint-config/rules.json"
+  },
+  "devDependencies": {
+    "@umaar/personal-eslint-config": "^1.0.3",
+    "xo": "^0.34.2"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.2"
+  }
+}
