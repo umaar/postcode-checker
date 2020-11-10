@@ -5,8 +5,16 @@
 {% block content %}
 
 <div class="container">
-	<p>This is index.html</p>
-	<p>value of hello is {{hello}}</p>
+	{% if message %}
+		<p>{{message}}</p>
+	{% endif %}
+	
+	<form method="GET" action="/">
+		<label for="postcode">Postcode:</label><br>
+		<input type="text" id="postcode" name="postcode" value="SE1 7QD" placeholder="Enter a postcode (W2 2SZ)" autofocus required minlength="{{config.postcodeValidationMinLength}}" maxlength="{{config.postcodeValidationMaxLength}}"><br>
+		<input type="submit" value="Submit">
+	</form> 
+	
 </div>
 
 {% endblock %}

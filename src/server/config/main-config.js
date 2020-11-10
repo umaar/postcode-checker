@@ -16,7 +16,9 @@ function init(app, express) {
 	});
 
 	app.locals.config = {
-		productName: config.get('productName')
+		productName: config.get('productName'),
+		postcodeValidationMaxLength: config.get('postcodeValidationMaxLength'),
+		postcodeValidationMinLength: config.get('postcodeValidationMinLength')
 	};
 
 	app.set('view engine', 'html');
