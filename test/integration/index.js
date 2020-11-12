@@ -63,13 +63,13 @@ const mockResponses = {
 function setup() {
 	// A failsafe with nock. Ensure no third-party requests are ever
 	// made as part of this integration test
-	nock.disableNetConnect();
-	nock.enableNetConnect('localhost');
+	// nock.disableNetConnect();
+	// nock.enableNetConnect('localhost');
 }
 
 function cleanup() {
-	nock.cleanAll();
-	nock.enableNetConnect();
+	// Nock.cleanAll();
+	// nock.enableNetConnect();
 
 	server.close();
 }
