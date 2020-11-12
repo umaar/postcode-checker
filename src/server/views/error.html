@@ -7,11 +7,14 @@
 
 <div class="container">
   {% if message %}
-    <h1>{{message}}</h1>
+    <h1 class="message">{{message}}</h1>
   {% endif %}
   {% if error.status %}
     <h2>{{error.status}}</h2>
   {% endif %}
+  <p>
+    <a href="/">Back to home</a>
+  </p>
 </div>
 
 {% endblock %}

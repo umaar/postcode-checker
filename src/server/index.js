@@ -11,8 +11,8 @@ appConfig(app, express);
 routeConfig(app);
 errorConfig(app);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);
 });
 
-export default app;
+export default server;

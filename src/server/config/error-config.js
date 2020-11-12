@@ -11,10 +11,6 @@ function init(app) {
 
 	// Production error handler (no stacktraces leaked to user)
 	app.use((error, request, response) => {
-		request.flash('messages', {
-			status: 'danger',
-			value: 'Something went wrong.'
-		});
 		response.status(error.status || 500).render('error', {
 			message: 'Something went wrong'
 		});

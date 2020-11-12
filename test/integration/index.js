@@ -4,16 +4,16 @@ import assert from 'assert';
 import nock from 'nock';
 import fetch from 'node-fetch';
 
-import '../../src/server/index.js';
+import server from '../../src/server/index.js';
 
 const port = config.get('port');
-const baseURL = `http://localhost:${port}`;
+const baseLocalURL = `http://localhost:${port}`;
 
 function getPostcodeURL(postcode) {
 	const parameters = new URLSearchParams();
 	parameters.append('postcode', postcode);
 
-	return `${baseURL}?${parameters.toString()}`;
+	return `${baseLocalURL}?${parameters.toString()}`;
 }
 
 function getMessageFromHTML(html) {
@@ -60,11 +60,22 @@ const mockResponses = {
 	}
 };
 
-async function test() {
+function setup() {
 	// A failsafe with nock. Ensure no third-party requests are ever
 	// made as part of this integration test
 	nock.disableNetConnect();
 	nock.enableNetConnect('localhost');
+}
+
+function cleanup() {
+	nock.cleanAll();
+	nock.enableNetConnect();
+
+	server.close();
+}
+
+async function test() {
+	setup();
 
 	await testPostcode({
 		postcode: 'abcd',
@@ -84,8 +95,7 @@ async function test() {
 		error: true
 	});
 
-	nock.cleanAll();
-	nock.enableNetConnect();
+	cleanup();
 }
 
 test();

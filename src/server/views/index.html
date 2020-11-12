@@ -6,11 +6,11 @@
 
 <div class="container">
 	{% if message %}
-		<p>{{message}}</p>
+		<p class="message">{{message}}</p>
 	{% endif %}
 	
 	<form method="GET" action="/">
-		<label for="postcode">Postcode:</label><br>
+		<label for="postcode">Postcode:</label>
 		<input type="text" id="postcode" name="postcode" value="SE1 7QD" placeholder="Enter a postcode (W2 2SZ)" autofocus required minlength="{{config.postcodeValidationMinLength}}" maxlength="{{config.postcodeValidationMaxLength}}"><br>
 		<input type="submit" value="Submit">
 	</form> 
