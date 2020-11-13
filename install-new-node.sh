@@ -2,9 +2,7 @@
 
 # for glitch deployments
 
-node -e "process.exit(parseInt(process.version.split('.')[0].replace('v', '')) < 15)"
-
-if [ $? -eq 1 ]; then
+if [[ -n "${PROJECT_DOMAIN}" ]]; then
 	echo "Installing new node"
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
 	export NVM_DIR="/app/.nvm"
