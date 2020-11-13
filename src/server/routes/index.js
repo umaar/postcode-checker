@@ -10,7 +10,7 @@ router.get('/', async (request, response) => {
 		return response.render('index');
 	}
 
-	const postcode = queries.postcode;
+	const {postcode} = queries;
 
 	let message;
 

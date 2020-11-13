@@ -12,31 +12,27 @@ import fetch from 'node-fetch';
 */
 
 async function validate(postcode) {
-	try {
-		const allowListPrefixes = ['Lambeth', 'Southwark'];
+	const allowListPrefixes = ['Lambeth', 'Southwark'];
 
-		const response = await fetch(`https://postcodes.io/postcodes/${postcode}`);
-		const json = await response.json();
+	const response = await fetch(`https://postcodes.io/postcodes/${postcode}`);
+	const json = await response.json();
 
-		const {
-			result: {lsoa} = {},
-			error
-		} = json;
+	const {
+		result: {lsoa} = {},
+		error
+	} = json;
 
-		if (lsoa) {
-			return allowListPrefixes.some(allowListPrefix => {
-				return lsoa.startsWith(allowListPrefix);
-			});
-		}
-
-		if (error === 'Postcode not found') {
-			return true;
-		}
-
-		return false;
-	} catch (error) {
-		throw error;
+	if (lsoa) {
+		return allowListPrefixes.some(allowListPrefix => {
+			return lsoa.startsWith(allowListPrefix);
+		});
 	}
+
+	if (error === 'Postcode not found') {
+		return true;
+	}
+
+	return false;
 }
 
 export default validate;
