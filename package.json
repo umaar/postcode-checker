@@ -8,7 +8,7 @@
     "test:unit": "echo 'no unit tests'",
     "test:e2e": "echo 'no e2e tests'",
     "lint": "./node_modules/.bin/xo",
-    "start": "bash install-new-node.sh && node src/server/index.js"
+    "start": "node src/server/index.js"
   },
   "engines": {
     "node": "^15.2.0"
