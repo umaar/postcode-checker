@@ -10,6 +10,9 @@
     "lint": "./node_modules/.bin/xo",
     "start": "node src/server/index.js"
   },
+  "engines": {
+    "node": "^15.2.0"
+  },
   "author": "Umar Hansa",
   "xo": {
     "extends": "./node_modules/@umaar/personal-eslint-config/rules.json"
