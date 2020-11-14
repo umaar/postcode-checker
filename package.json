@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "npm run lint && npm run test:integration && npm run test:unit && npm run test:e2e",
-    "test:integration": "node test/integration/index.js",
+    "test": "npm run lint && ./node_modules/.bin/ava",
+    "test:integration": "./node_modules/.bin/ava test/integration/*.js",
     "test:unit": "echo 'no unit tests'",
-    "test:e2e": "echo 'no e2e tests'",
+    "test:e2e": "./node_modules/.bin/ava test/e2e/*.js",
     "lint": "./node_modules/.bin/xo",
     "start": "node src/server/index.js"
   },
@@ -19,7 +19,9 @@
   },
   "devDependencies": {
     "@umaar/personal-eslint-config": "^1.0.3",
+    "ava": "^3.13.0",
     "nock": "^13.0.5",
+    "puppeteer": "^5.4.1",
     "xo": "^0.34.2"
   },
   "dependencies": {
@@ -27,6 +29,7 @@
     "compression": "^1.7.4",
     "config": "^3.3.2",
     "express": "^4.17.1",
+    "get-port": "^5.1.1",
     "node-fetch": "^2.6.1",
     "nunjucks": "^3.2.2"
   }
