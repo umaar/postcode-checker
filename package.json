@@ -3,10 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "npm run lint && ./node_modules/.bin/ava",
-    "test:integration": "./node_modules/.bin/ava test/integration/*.js",
-    "test:unit": "echo 'no unit tests'",
-    "test:e2e": "./node_modules/.bin/ava test/e2e/*.js",
+    "test": "npm run lint &&  node --no-warnings --loader=quibble ./node_modules/.bin/ava --verbose",
     "lint": "./node_modules/.bin/xo",
     "start": "node src/server/index.js"
   },
@@ -22,6 +19,7 @@
     "ava": "^3.13.0",
     "nock": "^13.0.5",
     "puppeteer": "^5.4.1",
+    "quibble": "^0.6.5",
     "xo": "^0.34.2"
   },
   "dependencies": {

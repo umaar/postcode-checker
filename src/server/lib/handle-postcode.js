@@ -11,7 +11,7 @@ async function handle(postcode) {
 
 	let message = '';
 
-	if (!postcode.length > 0) {
+	if (postcode.length === 0) {
 		message = 'Please enter a postcode';
 	} else if (!cleansedPostcode.length > 0) {
 		message = `The postcode "${postcode}" does not look valid, please try again`;

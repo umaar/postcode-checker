@@ -78,7 +78,7 @@ test.afterEach(t => {
 	t.context.server.close();
 });
 
-test('postcode 1', async t => {
+test('Postcode within a service area', async t => {
 	const message = await t.context.testPostcode({
 		postcode: 'abcd',
 		mockResponse: mockResponses.matchingServiceArea
@@ -87,7 +87,7 @@ test('postcode 1', async t => {
 	t.is(message, 'The postcode "abcd" is in the service area');
 });
 
-test('postcode 2', async t => {
+test('Postcode outside of a service error', async t => {
 	const message = await t.context.testPostcode({
 		postcode: 'abcd',
 		mockResponse: mockResponses.outsideServiceArea
@@ -96,7 +96,7 @@ test('postcode 2', async t => {
 	t.is(message, 'The postcode "abcd" is not in the service area');
 });
 
-test('postcode 3', async t => {
+test('Third-party postcode lookup service is down', async t => {
 	const message = await t.context.testPostcode({
 		postcode: 'abcd',
 		error: true
