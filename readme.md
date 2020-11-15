@@ -4,14 +4,8 @@
 
 [Deployed here (live version)](https://blooming-depths-74637.herokuapp.com/)
 
-#### Features
+#### Developer facing features
 
-##### User facing features
-
-- 
-
-##### Developer facing features
-
-- Uses Modern JS features like, ES Modules (ESM)
+- Uses Modern JS features like, ES Modules (ESM), Proxy
 - Complete testing suite (unit, integration and end-to-end) with test parallelization
 - Able to spin up multiple versions of this web app with randomised ports
