@@ -16,7 +16,9 @@ router.get('/', async (request, response) => {
 
 	try {
 		message = await handlePostcode(postcode);
-	} catch {
+	} catch (error) {
+		console.log('Unexpected error:', error);
+
 		return response.status(500).render('error', {
 			message: 'Sorry, something went wrong'
 		});

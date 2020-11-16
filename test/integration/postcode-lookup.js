@@ -30,7 +30,7 @@ function testPostcodeWithURL(baseURL) {
 			.get(`/postcodes/${postcode}`);
 
 		if (error) {
-			mocked.replyWithError('Noooooooo');
+			mocked.replyWithError('Expected network failure as part of a unit test!');
 		} else {
 			mocked.reply(200, mockResponse);
 		}
@@ -80,25 +80,25 @@ test.afterEach(t => {
 
 test('Postcode within a service area', async t => {
 	const message = await t.context.testPostcode({
-		postcode: 'abcd',
+		postcode: 'ABCD',
 		mockResponse: mockResponses.matchingServiceArea
 	});
 
-	t.is(message, 'The postcode "abcd" is in the service area');
+	t.is(message, 'The postcode "ABCD" is in the service area');
 });
 
 test('Postcode outside of a service error', async t => {
 	const message = await t.context.testPostcode({
-		postcode: 'abcd',
+		postcode: 'ABCD',
 		mockResponse: mockResponses.outsideServiceArea
 	});
 
-	t.is(message, 'The postcode "abcd" is not in the service area');
+	t.is(message, 'The postcode "ABCD" is not in the service area');
 });
 
 test('Third-party postcode lookup service is down', async t => {
 	const message = await t.context.testPostcode({
-		postcode: 'abcd',
+		postcode: 'ABCD',
 		error: true
 	});
 

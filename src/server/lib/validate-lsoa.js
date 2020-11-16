@@ -18,18 +18,13 @@ async function validate(postcode) {
 	const json = await response.json();
 
 	const {
-		result: {lsoa} = {},
-		error
+		result: {lsoa} = {}
 	} = json;
 
 	if (lsoa) {
 		return allowListPrefixes.some(allowListPrefix => {
 			return lsoa.startsWith(allowListPrefix);
 		});
-	}
-
-	if (error === 'Postcode not found') {
-		return true;
 	}
 
 	return false;

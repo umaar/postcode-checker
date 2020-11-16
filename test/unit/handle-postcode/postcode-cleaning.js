@@ -25,7 +25,7 @@ test('Postcode cleaning', async t => {
 	t.is(mocked.lastCalledArgument, 'ABCDEF', 'spaces are removed from a postcode');
 
 	await handlePostcode('a!b£c%');
-	t.is(mocked.lastCalledArgument, 'abc', 'symbols are removed from a postcode');
+	t.is(mocked.lastCalledArgument, 'ABC', 'symbols are removed from a postcode');
 
 	quibble.reset();
 });
