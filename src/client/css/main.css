@@ -15,29 +15,40 @@ body {
 	margin: 0 auto;
 	max-width: 500px;
 	padding: 2rem 1rem;
-	text-align: center;
 	margin-top: 50px;
+}
+
+.main-instruction,
+.message {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .message {
 	color: #920de9;
-	font-weight: bold;
+}
+
+form {
+	padding-bottom: 50px;
+    border-bottom: 1px solid lightgrey;
 }
 
 form input[type="text"] {
 	font-size: 20px;
-	padding: 5px;
+	padding: 5px 10px;
 	margin-left: 10px;
+	width:  50%;
 }
 
 form input[type="submit"] {
 	font-size: 20px;
 	margin-top: 20px;
 	cursor: pointer;
+	padding:  8px;
 }
 
 footer {
 	font-size: 14px;
-	margin-top: 50px;
+	margin-top: 80px;
 	text-align: center;
 }

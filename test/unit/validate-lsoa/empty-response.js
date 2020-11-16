@@ -8,13 +8,21 @@ import createFetchMock from './utils/_fetch-mock.js';
 	See: https://github.com/testdouble/quibble/issues/39
 */
 
-test('An empty response does not conform', async t => {
+test.beforeEach(async () => {
 	await quibble('node-fetch', createFetchMock({}));
+	await quibble.esm('config', null, {
+		get() {}
+	});
+});
 
+test.afterEach(() => {
+	quibble.reset();
+});
+
+test('An empty API response is handled', async t => {
 	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: validateLsoa} = await import('../../../src/server/lib/validate-lsoa.js');
 
-	const result = await validateLsoa('empty response');
+	const result = await validateLsoa();
 	t.is(result, false, 'An empty JSON response returns false');
-	quibble.reset();
 });

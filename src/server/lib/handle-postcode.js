@@ -1,42 +1,36 @@
 import config from 'config';
 import validateLSOA from './validate-lsoa.js';
+import isAllowListedPostcode from '../utils/postcode-allow-list.js';
+
+import formatPostcode from '../utils/format-postcode.js';
 
 const postcodeValidationMinLength = config.get('postcodeValidationMinLength');
 const postcodeValidationMaxLength = config.get('postcodeValidationMaxLength');
-const postcodeAllowList = config.get('postcodeAllowList');
-
-function isAllowListedPostcode(postcode) {
-	return postcodeAllowList.some(allowedPostcode => {
-		return formatPostcode(allowedPostcode) === postcode;
-	});
-}
-
-function formatPostcode(postcode) {
-	return postcode.replace(/[^\da-zA-Z]/g, '')
-		.replaceAll(' ', '')
-		.toUpperCase();
-}
 
 async function handle(postcode) {
-	const cleansedPostcode = formatPostcode(postcode);
-
-	let message = '';
-
 	if (postcode.length === 0) {
-		message = 'Please enter a postcode';
-	} else if (!cleansedPostcode.length > 0) {
-		message = 'That postcode does not look valid, please try again';
-	} else if (cleansedPostcode.length < postcodeValidationMinLength) {
-		message = `The postcode "${cleansedPostcode}" looks too short, please try again`;
-	} else if (cleansedPostcode.length > postcodeValidationMaxLength) {
-		message = `The postcode "${cleansedPostcode}" looks too long, please try again`;
-	} else if (isAllowListedPostcode(cleansedPostcode)) {
-		message = `The postcode "${cleansedPostcode}" is in the service area`;
-	} else {
-		message = (await validateLSOA(cleansedPostcode)) ? `The postcode "${cleansedPostcode}" is in the service area` : `The postcode "${cleansedPostcode}" is not in the service area`;
+		return 'Please enter a postcode';
 	}
 
-	return message;
+	const formattedPostcode = formatPostcode(postcode);
+
+	if (!formattedPostcode.length > 0) {
+		return 'That postcode does not look valid, please try again';
+	}
+
+	if (formattedPostcode.length < postcodeValidationMinLength) {
+		return `The postcode "${formattedPostcode}" looks too short, please try again`;
+	}
+
+	if (formattedPostcode.length > postcodeValidationMaxLength) {
+		return `The postcode "${formattedPostcode}" looks too long, please try again`;
+	}
+
+	if (isAllowListedPostcode(formattedPostcode) || await validateLSOA(formattedPostcode)) {
+		return `The postcode "${formattedPostcode}" is in the service area`;
+	}
+
+	return `The postcode "${formattedPostcode}" is not in the service area`;
 }
 
 export default handle;

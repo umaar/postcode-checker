@@ -3,5 +3,12 @@
 	"port": 3000,
 	"postcodeValidationMinLength": 2,
 	"postcodeValidationMaxLength": 20,
-	"postcodeAllowList": ["SH24 1AA", "SH24 1AB"]
+	"postcodeAllowList": [
+		"SH24 1AA",
+		"SH24 1AB"
+	],
+	"postcodeAllowListPrefixes": [
+		"Lambeth",
+		"Southwark"
+	]
 }

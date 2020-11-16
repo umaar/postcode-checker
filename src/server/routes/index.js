@@ -10,12 +10,10 @@ router.get('/', async (request, response) => {
 		return response.render('index');
 	}
 
-	const {postcode} = queries;
-
 	let message;
 
 	try {
-		message = await handlePostcode(postcode);
+		message = await handlePostcode(queries.postcode);
 	} catch (error) {
 		console.log('Unexpected error:', error);
 

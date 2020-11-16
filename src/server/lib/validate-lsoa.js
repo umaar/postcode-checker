@@ -1,19 +1,9 @@
 import fetch from 'node-fetch';
+import config from 'config';
 
-/*
-	To validate:
-	- SE17QD
-	- N200AG
-	- SH241AA
-	- abc
-
-	also check proper response status codes
-	and check when service goes down.
-*/
+const allowListPrefixes = config.get('postcodeAllowListPrefixes');
 
 async function validate(postcode) {
-	const allowListPrefixes = ['Lambeth', 'Southwark'];
-
 	const response = await fetch(`https://postcodes.io/postcodes/${postcode}`);
 	const json = await response.json();
 

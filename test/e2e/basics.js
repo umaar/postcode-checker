@@ -33,20 +33,20 @@ test('Searching for a postcode within the service area', withPage, async (t, pag
 		page
 	});
 	const message = await page.$eval('.message', element => element.textContent);
-	t.is(message, 'The postcode "SE17QD" is in the service area');
+	t.is(message, 'The postcode "SE17QD" is in the service area', 'Message informs that the postcode is within the service area');
 });
 
-test('Searching for an invalid postcode', withPage, async (t, page) => {
+test('Searching for an unknown postcode', withPage, async (t, page) => {
 	await page.goto(t.context.baseURL);
 	await submitPostcode({
 		postcode: 'aaa',
 		page
 	});
 	const message = await page.$eval('.message', element => element.textContent);
-	t.is(message, 'The postcode "AAA" is not in the service area');
+	t.is(message, 'The postcode "AAA" is not in the service area', 'Message informs that the postcode is not in the service area');
 });
 
-test('Searching for multiple postcodes', withPage, async (t, page) => {
+test('Searching for postcodes consecutively', withPage, async (t, page) => {
 	await page.goto(t.context.baseURL);
 	await submitPostcode({
 		postcode: 'SH24 1AB',
@@ -77,5 +77,5 @@ test('Searching for postcode within the allowlist', withPage, async (t, page) =>
 		page
 	});
 	const message = await page.$eval('.message', element => element.textContent);
-	t.is(message, 'The postcode "SH241AA" is in the service area');
+	t.is(message, 'The postcode "SH241AA" is in the service area', 'A postcode from the allowlist is allowed');
 });

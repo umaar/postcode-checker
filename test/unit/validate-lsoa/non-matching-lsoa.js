@@ -8,16 +8,27 @@ import createFetchMock from './utils/_fetch-mock.js';
 	See: https://github.com/testdouble/quibble/issues/39
 */
 
-test('lambeth', async t => {
+test.beforeEach(async () => {
 	await quibble('node-fetch', createFetchMock({
 		result: {
-			lsoa: 'abc'
+			lsoa: 'random lsoa'
 		}
 	}));
+	await quibble.esm('config', null, {
+		get() {
+			return ['abc', 'def'];
+		}
+	});
+});
+
+test.afterEach(() => {
+	quibble.reset();
+});
+
+test('lambeth', async t => {
 	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: validateLsoa} = await import('../../../src/server/lib/validate-lsoa.js');
 
-	const result = await validateLsoa('non matching lsoa');
+	const result = await validateLsoa();
 	t.is(result, false, 'When an lsoa is present, but does not match the allowlist, false is returned');
-	quibble.reset();
 });

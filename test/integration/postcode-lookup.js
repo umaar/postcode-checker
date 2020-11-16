@@ -1,49 +1,7 @@
-import cheerio from 'cheerio';
 import nock from 'nock';
-import fetch from 'node-fetch';
 import test from 'ava';
 
-function getPostcodeURL({postcode, baseURL}) {
-	const parameters = new URLSearchParams();
-	parameters.append('postcode', postcode);
-
-	return `${baseURL}?${parameters.toString()}`;
-}
-
-function getMessageFromHTML(html) {
-	const $ = cheerio.load(html);
-	return $('.message').text();
-}
-
-async function getHTMLFromURL(url) {
-	const response = await fetch(url);
-	return response.text();
-}
-
-function testPostcodeWithURL(baseURL) {
-	return async function ({
-		postcode,
-		mockResponse,
-		error = false
-	}) {
-		const mocked = nock('https://postcodes.io')
-			.get(`/postcodes/${postcode}`);
-
-		if (error) {
-			mocked.replyWithError('Expected network failure as part of a unit test!');
-		} else {
-			mocked.reply(200, mockResponse);
-		}
-
-		const url = getPostcodeURL({
-			postcode,
-			baseURL
-		});
-		const html = await getHTMLFromURL(url);
-		const message = getMessageFromHTML(html);
-		return message;
-	};
-}
+import testPostcodeWithURL from './_utils.js';
 
 const mockResponses = {
 	matchingServiceArea: {
@@ -102,6 +60,6 @@ test('Third-party postcode lookup service is down', async t => {
 		error: true
 	});
 
-	t.is(message, 'Sorry, something went wrong');
+	t.is(message, 'Sorry, something went wrong', 'Message informs of a backend error');
 });
 
