@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "test": "npm run lint && ava --node-arguments=\"--no-warnings --loader=quibble\" --verbose",
-    "lint": "./node_modules/.bin/xo",
+    "lint": "xo",
     "start": "node src/server/index.js"
   },
   "author": "Umar Hansa",
