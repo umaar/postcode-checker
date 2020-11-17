@@ -16,6 +16,7 @@ To run this webpage locally, complete the following steps:
 
 1. Install Node.js __v15.1.0__ or later (use [nvm](https://github.com/nvm-sh/nvm) if you want to manage multiple versions).
 	+ Older versions may work, but are untested.
+	+ Windows has not been fully tested
 2. Clone/download this project from GitHub.
 3. In your terminal, `cd` into this repository and run `npm install`.
 4. Run the command `npm start` and navigate to the URL presented in the terminal, for example: `localhost:3000`.
@@ -32,13 +33,13 @@ npm test
 npm run lint
 
 # Run unit tests
-node --loader=quibble ./node_modules/.bin/ava test/unit/**/*.js
+npx ava --node-arguments=\"--loader=quibble\" --verbose test/unit/**/*.js
 
 # Run integration tests
-node ./node_modules/.bin/ava test/integration/**/*.js
+npx ava --node-arguments=\"--loader=quibble\" --verbose test/integration/**/*.js
 
 # Run end to end tests
-node ./node_modules/.bin/ava test/e2e/**/*.js
+npx ava --node-arguments=\"--loader=quibble\" --verbose test/e2e/**/*.js
 ``` 
 
 #### To change configuration

@@ -30,7 +30,6 @@ test.afterEach(() => {
 });
 
 test('Postcode in a service area', async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: handlePostcode} = await import('../../../src/server/lib/handle-postcode.js');
 
 	t.is(await handlePostcode('aaa'), 'The postcode "aaa" is in the service area', 'Informs the postcode is in a service area, with enough passing conditions');

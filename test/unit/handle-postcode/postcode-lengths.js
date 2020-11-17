@@ -30,7 +30,6 @@ test.afterEach(() => {
 });
 
 test('Postcode length out of bounds', async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: handlePostcode} = await import('../../../src/server/lib/handle-postcode.js');
 
 	t.is(await handlePostcode(''), 'Please enter a postcode', 'Prompts to insert a postcode when none has been supplied');

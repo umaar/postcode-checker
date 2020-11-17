@@ -2,7 +2,6 @@ import test from 'ava';
 import 'quibble'; // eslint-disable-line import/no-unassigned-import
 
 test('Formatting postcodes', async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: formatPostcode} = await import('../../src/server/utils/format-postcode.js');
 
 	t.is(formatPostcode('aaBBcc'), 'AABBCC', 'Uppercases the post');

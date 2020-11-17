@@ -2,7 +2,6 @@ import test from 'ava';
 import withPage from './_with-page.js';
 
 test.before(async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: startServer} = await import('../../src/server/index.js');
 	const server = await startServer;
 	t.context.baseURL = `http://localhost:${server.address().port}`;

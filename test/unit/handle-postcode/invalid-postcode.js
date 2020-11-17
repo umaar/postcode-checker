@@ -30,7 +30,6 @@ test.afterEach(() => {
 });
 
 test('Invalid postcodes', async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: handlePostcode} = await import('../../../src/server/lib/handle-postcode.js');
 
 	t.is(await handlePostcode('aaa'), 'That postcode does not look valid, please try again', 'Informs of an invalid postcode');

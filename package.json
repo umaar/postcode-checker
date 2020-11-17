@@ -3,12 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "npm run lint &&  node --no-warnings --loader=quibble ./node_modules/.bin/ava --verbose",
+    "test": "npm run lint && ava --node-arguments=\"--no-warnings --loader=quibble\" --verbose",
     "lint": "./node_modules/.bin/xo",
     "start": "node src/server/index.js"
-  },
-  "engines": {
-    "node": "^15.2.0"
   },
   "author": "Umar Hansa",
   "xo": {

@@ -20,7 +20,6 @@ test.afterEach(() => {
 });
 
 test('Postcode allow list check', async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: isAllowListedPostcode} = await import('../../../src/server/utils/postcode-allow-list.js');
 
 	t.is(await isAllowListedPostcode('111'), false, 'A postcode cannot be part of a non-existent allow list');

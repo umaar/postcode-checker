@@ -22,7 +22,6 @@ test.beforeEach(async t => {
 	nock.disableNetConnect();
 	nock.enableNetConnect('localhost');
 
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: serverPromise} = await import('../../src/server/index.js');
 	const server = await serverPromise;
 	const baseLocalURL = `http://localhost:${server.address().port}`;

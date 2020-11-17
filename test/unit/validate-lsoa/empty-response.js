@@ -20,7 +20,6 @@ test.afterEach(() => {
 });
 
 test('An empty API response is handled', async t => {
-	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const {default: validateLsoa} = await import('../../../src/server/lib/validate-lsoa.js');
 
 	const result = await validateLsoa();
