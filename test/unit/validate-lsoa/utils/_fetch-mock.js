@@ -3,7 +3,7 @@ function createFetchMock(jsonResponse) {
 		return {
 			async json() {
 				return jsonResponse;
-			}
+			},
 		};
 	};
 }

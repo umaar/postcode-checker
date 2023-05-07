@@ -1,24 +1,30 @@
-{% extends '_base.html' %}
-
-{% block title %}{% endblock %}
-
-{% block content %}
+{% extends '_base.html' %} {% block title %}{% endblock %} {% block content %}
 
 <div class="container">
 	{% if message %}
-		<p class="message">{{message}}</p>
+	<p class="message">{{message}}</p>
 	{% else %}
-		<p class="main-instruction">Please enter a postcode</p>		
+	<p class="main-instruction">Please enter a postcode</p>
 	{% endif %}
-	
+
 	<form method="GET" action="/">
 		<label for="postcode">Postcode:</label>
-		<input type="text" id="postcode" name="postcode" placeholder="Enter a postcode (W2 2SZ)" autofocus required minlength="{{config.postcodeValidationMinLength}}" maxlength="{{config.postcodeValidationMaxLength}}"><br>
-		<input type="submit" value="Submit">
+		<input
+			type="text"
+			id="postcode"
+			name="postcode"
+			placeholder="Enter a postcode (W2 2SZ)"
+			autofocus
+			required
+			minlength="{{config.postcodeValidationMinLength}}"
+			maxlength="{{config.postcodeValidationMaxLength}}"
+		/>
+		<input type="submit" value="Submit" />
 	</form>
 
-	<p class="info">Use this form to find out whether a postcode is allowed or not.</p>
-	
+	<p class="info">
+		Use this form to find out whether a postcode is allowed or not.
+	</p>
 </div>
 
 {% endblock %}

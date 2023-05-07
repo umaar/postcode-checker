@@ -5,14 +5,14 @@ function init(app) {
 		const error = new Error('Not Found');
 		error.status = 404;
 		response.status(error.status).render('error', {
-			message: 'Not found'
+			message: 'Not found',
 		});
 	});
 
 	// Production error handler (no stacktraces leaked to user)
 	app.use((error, request, response) => {
 		response.status(error.status || 500).render('error', {
-			message: 'Something went wrong'
+			message: 'Something went wrong',
 		});
 	});
 }

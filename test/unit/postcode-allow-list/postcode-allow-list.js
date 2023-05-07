@@ -13,7 +13,7 @@ test.beforeEach(async () => {
 	await quibble.esm('config', null, {
 		get() {
 			return ['ABC', 'XYZ'];
-		}
+		},
 	});
 });
 

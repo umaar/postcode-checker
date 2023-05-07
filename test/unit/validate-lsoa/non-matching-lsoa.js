@@ -11,13 +11,13 @@ import createFetchMock from './utils/_fetch-mock.js';
 test.beforeEach(async () => {
 	await quibble('node-fetch', createFetchMock({
 		result: {
-			lsoa: 'random lsoa'
-		}
+			lsoa: 'random lsoa',
+		},
 	}));
 	await quibble.esm('config', null, {
 		get() {
 			return ['abc', 'def'];
-		}
+		},
 	});
 });
 

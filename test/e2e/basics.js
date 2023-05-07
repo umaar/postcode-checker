@@ -16,7 +16,7 @@ async function submitPostcode({postcode, page}) {
 	await page.type('#postcode', postcode);
 	await Promise.all([
 		page.click('[type="submit"]'),
-		page.waitForNavigation(['load'])
+		page.waitForNavigation(['load']),
 	]);
 }
 
@@ -29,7 +29,7 @@ test('Searching for a postcode within the service area', withPage, async (t, pag
 	await page.goto(t.context.baseURL);
 	await submitPostcode({
 		postcode: 'SE1 7QD',
-		page
+		page,
 	});
 	const message = await page.$eval('.message', element => element.textContent);
 	t.is(message, 'The postcode "SE17QD" is in the service area', 'Message informs that the postcode is within the service area');
@@ -39,7 +39,7 @@ test('Searching for an unknown postcode', withPage, async (t, page) => {
 	await page.goto(t.context.baseURL);
 	await submitPostcode({
 		postcode: 'aaa',
-		page
+		page,
 	});
 	const message = await page.$eval('.message', element => element.textContent);
 	t.is(message, 'The postcode "AAA" is not in the service area', 'Message informs that the postcode is not in the service area');
@@ -49,21 +49,21 @@ test('Searching for postcodes consecutively', withPage, async (t, page) => {
 	await page.goto(t.context.baseURL);
 	await submitPostcode({
 		postcode: 'SH24 1AB',
-		page
+		page,
 	});
 	const message1 = await page.$eval('.message', element => element.textContent);
 	t.is(message1, 'The postcode "SH241AB" is in the service area', 'Message confirms postcode is in the service area');
 
 	await submitPostcode({
 		postcode: 'N2 00 AG',
-		page
+		page,
 	});
 	const message2 = await page.$eval('.message', element => element.textContent);
 	t.is(message2, 'The postcode "N200AG" is not in the service area', 'Message confirms postcode is not in the service area');
 
 	await submitPostcode({
 		postcode: ' SE1 7QA ',
-		page
+		page,
 	});
 	const message3 = await page.$eval('.message', element => element.textContent);
 	t.is(message3, 'The postcode "SE17QA" is in the service area', 'Message confirms postcode is in the service area');
@@ -73,7 +73,7 @@ test('Searching for postcode within the allowlist', withPage, async (t, page) =>
 	await page.goto(t.context.baseURL);
 	await submitPostcode({
 		postcode: 'SH24 1AA',
-		page
+		page,
 	});
 	const message = await page.$eval('.message', element => element.textContent);
 	t.is(message, 'The postcode "SH241AA" is in the service area', 'A postcode from the allowlist is allowed');

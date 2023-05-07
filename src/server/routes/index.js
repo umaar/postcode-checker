@@ -18,12 +18,12 @@ router.get('/', async (request, response) => {
 		console.log('Unexpected error:', error);
 
 		return response.status(500).render('error', {
-			message: 'Sorry, something went wrong'
+			message: 'Sorry, something went wrong',
 		});
 	}
 
 	return response.render('index', {
-		message
+		message,
 	});
 });
 

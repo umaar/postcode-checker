@@ -21,7 +21,7 @@ test.beforeEach(async () => {
 			if (property === 'postcodeValidationMaxLength') {
 				return 5;
 			}
-		}
+		},
 	});
 });
 
@@ -39,6 +39,6 @@ test('Postcode length out of bounds', async t => {
 	t.is(
 		await handlePostcode(longPostcode),
 		`The postcode "${longPostcode}" looks too long, please try again`,
-		'Informs that the postcode is too long'
+		'Informs that the postcode is too long',
 	);
 });

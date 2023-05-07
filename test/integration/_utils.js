@@ -23,7 +23,7 @@ function testPostcodeWithURL(baseURL) {
 	return async function ({
 		postcode,
 		mockResponse,
-		error = false
+		error = false,
 	}) {
 		const mocked = nock('https://postcodes.io')
 			.get(`/postcodes/${postcode}`);
@@ -36,7 +36,7 @@ function testPostcodeWithURL(baseURL) {
 
 		const url = getPostcodeURL({
 			postcode,
-			baseURL
+			baseURL,
 		});
 		const html = await getHTMLFromURL(url);
 		const message = getMessageFromHTML(html);

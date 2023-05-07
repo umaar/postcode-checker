@@ -8,13 +8,11 @@ async function validate(postcode) {
 	const json = await response.json();
 
 	const {
-		result: {lsoa} = {}
+		result: {lsoa} = {},
 	} = json;
 
 	if (lsoa) {
-		return allowListPrefixes.some(allowListPrefix => {
-			return lsoa.startsWith(allowListPrefix);
-		});
+		return allowListPrefixes.some(allowListPrefix => lsoa.startsWith(allowListPrefix));
 	}
 
 	return false;

@@ -11,7 +11,7 @@ test.beforeEach(async () => {
 	await quibble.esm('../../../src/server/utils/format-postcode.js', undefined, postcode => postcode);
 
 	await quibble.esm('config', null, {
-		get() {}
+		get() {},
 	});
 });
 

@@ -10,7 +10,7 @@ async function startServer(app) {
 	const desiredPort = config.get('port');
 
 	const port = process.env.PORT || await getPort({
-		port: desiredPort
+		port: desiredPort,
 	});
 
 	return new Promise(resolve => {

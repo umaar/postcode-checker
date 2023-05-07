@@ -11,7 +11,7 @@ import createFetchMock from './utils/_fetch-mock.js';
 test.beforeEach(async () => {
 	await quibble('node-fetch', createFetchMock({}));
 	await quibble.esm('config', null, {
-		get() {}
+		get() {},
 	});
 });
 

@@ -6,14 +6,14 @@ import testPostcodeWithURL from './_utils.js';
 const mockResponses = {
 	matchingServiceArea: {
 		result: {
-			lsoa: 'Lambeth'
-		}
+			lsoa: 'Lambeth',
+		},
 	},
 	outsideServiceArea: {
 		result: {
-			lsoa: 'AABBCCDD'
-		}
-	}
+			lsoa: 'AABBCCDD',
+		},
+	},
 };
 
 test.beforeEach(async t => {
@@ -38,7 +38,7 @@ test.afterEach(t => {
 test('Postcode within a service area', async t => {
 	const message = await t.context.testPostcode({
 		postcode: 'ABCD',
-		mockResponse: mockResponses.matchingServiceArea
+		mockResponse: mockResponses.matchingServiceArea,
 	});
 
 	t.is(message, 'The postcode "ABCD" is in the service area');
@@ -47,7 +47,7 @@ test('Postcode within a service area', async t => {
 test('Postcode outside of a service error', async t => {
 	const message = await t.context.testPostcode({
 		postcode: 'ABCD',
-		mockResponse: mockResponses.outsideServiceArea
+		mockResponse: mockResponses.outsideServiceArea,
 	});
 
 	t.is(message, 'The postcode "ABCD" is not in the service area');
@@ -56,7 +56,7 @@ test('Postcode outside of a service error', async t => {
 test('Third-party postcode lookup service is down', async t => {
 	const message = await t.context.testPostcode({
 		postcode: 'ABCD',
-		error: true
+		error: true,
 	});
 
 	t.is(message, 'Sorry, something went wrong', 'Message informs of a backend error');

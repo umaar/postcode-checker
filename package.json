@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "npm run lint && ava --node-arguments=\"--no-warnings --loader=quibble\" --verbose",
+    "test": "ava --node-arguments=\"--no-warnings --loader=quibble\" --verbose",
     "lint": "xo",
     "start": "node src/server/index.js"
   },
@@ -12,20 +12,20 @@
     "extends": "./node_modules/@umaar/personal-eslint-config/rules.json"
   },
   "devDependencies": {
-    "@umaar/personal-eslint-config": "^1.0.3",
-    "ava": "^3.13.0",
-    "cheerio": "^1.0.0-rc.3",
-    "nock": "^13.0.5",
-    "puppeteer": "^5.5.0",
-    "quibble": "^0.6.5",
-    "xo": "^0.34.2"
+    "@umaar/personal-eslint-config": "^1.0.5",
+    "ava": "^5.2.0",
+    "cheerio": "^1.0.0-rc.12",
+    "nock": "^13.3.0",
+    "puppeteer": "^19.8.0",
+    "quibble": "^0.6.17",
+    "xo": "^0.53.1"
   },
   "dependencies": {
     "compression": "^1.7.4",
-    "config": "^3.3.2",
-    "express": "^4.17.1",
-    "get-port": "^5.1.1",
-    "node-fetch": "^2.6.1",
-    "nunjucks": "^3.2.2"
+    "config": "^3.3.9",
+    "express": "^4.18.2",
+    "get-port": "^6.1.2",
+    "node-fetch": "^3.3.1",
+    "nunjucks": "^3.2.3"
   }
 }

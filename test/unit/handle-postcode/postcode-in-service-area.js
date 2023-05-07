@@ -21,7 +21,7 @@ test.beforeEach(async () => {
 			if (property === 'postcodeValidationMaxLength') {
 				return 5;
 			}
-		}
+		},
 	});
 });
 
