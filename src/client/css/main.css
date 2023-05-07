@@ -1,6 +1,7 @@
 body {
 	--color-text: #000;
-	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	--line-height: 1.5;
 	color: var(--color-text);
 	font-family: var(--font-family);
@@ -20,8 +21,8 @@ body {
 
 .main-instruction,
 .message {
-    font-weight: bold;
-    font-size: 1.2em;
+	font-weight: bold;
+	font-size: 1.2em;
 }
 
 .message {
@@ -30,21 +31,19 @@ body {
 
 form {
 	padding-bottom: 50px;
-    border-bottom: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
 }
 
 form input[type="text"] {
 	font-size: 20px;
-	padding: 5px 10px;
-	margin-left: 10px;
-	width:  50%;
+	width: 50%;
 }
 
 form input[type="submit"] {
 	font-size: 20px;
 	margin-top: 20px;
 	cursor: pointer;
-	padding:  8px;
+	padding: 8px;
 }
 
 footer {
