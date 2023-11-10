@@ -2,8 +2,6 @@
 
 [![Actions Status](https://github.com/umaar/postcode-checker/workflows/Node%20CI/badge.svg)](https://github.com/umaar/postcode-checker/actions)
 
-[Deployed here (live version)](https://blooming-depths-74637.herokuapp.com/)
-
 ### About
 
 This is a Node.js powered webpage which informs you whether or not a postcode is allowed, according to small set of business logic. In this readme, you can find instructions on how to run this locally, how this is deployed, and some developer facing features for you to be aware of.
@@ -14,9 +12,9 @@ This is a Node.js powered webpage which informs you whether or not a postcode is
 
 To run this webpage locally, complete the following steps:
 
-1. Install Node.js __v15.1.0__ or later (use [nvm](https://github.com/nvm-sh/nvm) if you want to manage multiple versions).
-	+ Older versions may work, but are untested.
-	+ Windows has not been fully tested and may not run tests correctly
+1. Install Node.js **v21.1.0** or later (use [nvm](https://github.com/nvm-sh/nvm) if you want to manage multiple versions).
+    - Older versions may work, but are untested.
+    - Windows has not been fully tested and may not run tests correctly
 2. Clone/download this project from GitHub.
 3. In your terminal, `cd` into this repository and run `npm install`.
 4. Run the command `npm start` and navigate to the URL presented in the terminal, for example: `localhost:3000`.
@@ -40,7 +38,7 @@ npx ava --verbose test/integration/**/*.js
 
 # Run end to end tests
 npx ava --verbose test/e2e/**/*.js
-``` 
+```
 
 #### To change configuration
 
@@ -52,11 +50,11 @@ Deployment, and testing on CI, happens through the `.github/workflows/nodejs.yml
 
 ### Developer facing features
 
-- Uses Modern JS features like, ES Modules (ESM)
-- Complete testing suite (unit, integration and end-to-end)
-	+ Includes test parallelization thanks to `ava`
-	+ Includes code linting
-	+ Full test isolation during unit testing
-- Able to spin up multiple versions of this web app with randomised ports
-- Minimal dependencies, no web frameworks, or complicated build pipeline, no JavaScript on the client-side
-- Continuous integration + deployment with GitHub Actions
+-   Uses Modern JS features like, ES Modules (ESM)
+-   Complete testing suite (unit, integration and end-to-end)
+    -   Includes test parallelization thanks to `ava`
+    -   Includes code linting
+    -   Full test isolation during unit testing
+-   Able to spin up multiple versions of this web app with randomised ports
+-   Minimal dependencies, no web frameworks, or complicated build pipeline, no JavaScript on the client-side
+-   Continuous integration + deployment with GitHub Actions
