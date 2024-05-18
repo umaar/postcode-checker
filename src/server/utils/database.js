@@ -25,7 +25,13 @@ async function insertSearch(postcode, searchTime) {
 
 async function retrieveRecentSearches(limit = 5) {
     const db = await openDB();
-    return db.all('SELECT postcode, searchTime FROM searches ORDER BY id DESC LIMIT ?', [limit]);
+    return db.all('SELECT postcode, searchTime, ID FROM searches ORDER BY id DESC LIMIT ?', [limit]);
 }
 
-export { initializeDatabase, insertSearch, retrieveRecentSearches };
+// Function to delete a search record by its id
+async function deleteSearch(id) {
+    const db = await openDB();
+    await db.run('DELETE FROM searches WHERE id = ?', [id]);
+}
+
+export { initializeDatabase, insertSearch, retrieveRecentSearches, deleteSearch };

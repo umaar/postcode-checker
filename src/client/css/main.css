@@ -86,3 +86,18 @@ footer {
 .recent-searches ul li a:hover {
 	text-decoration: underline;
 }
+
+/* Styling for the delete button next to recent searches */
+.delete-button {
+	background-color: #ff4d4d;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.delete-button:hover {
+	background-color: #ff3333;
+}
