@@ -19,6 +19,16 @@ To run this webpage locally, complete the following steps:
 3. In your terminal, `cd` into this repository and run `npm install`.
 4. Run the command `npm start` and navigate to the URL presented in the terminal, for example: `localhost:3000`.
 
+#### Database Initialization
+
+Before running the application for the first time, ensure to initialize the SQLite database by running the following command:
+
+```sh
+npm run init-db
+```
+
+This will create the necessary database and tables for storing postcode search data.
+
 #### Tests
 
 Note the following commands:

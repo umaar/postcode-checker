@@ -51,3 +51,38 @@ footer {
 	margin-top: 80px;
 	text-align: center;
 }
+
+/* Styles for the recently searched postcodes section */
+.recent-searches {
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.recent-searches h2 {
+	color: #333;
+}
+
+.recent-searches ul {
+	list-style: none;
+	padding: 0;
+}
+
+.recent-searches ul li {
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.recent-searches ul li:last-child {
+	border-bottom: none;
+}
+
+.recent-searches ul li a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+.recent-searches ul li a:hover {
+	text-decoration: underline;
+}

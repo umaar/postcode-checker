@@ -1,7 +1,7 @@
 import config from 'config';
 import validateLSOA from './validate-lsoa.js';
 import isAllowListedPostcode from '../utils/postcode-allow-list.js';
-
+import { insertSearch } from '../utils/database.js'; // Import the insertSearch function
 import formatPostcode from '../utils/format-postcode.js';
 
 const postcodeValidationMinLength = config.get('postcodeValidationMinLength');
@@ -26,7 +26,13 @@ async function handle(postcode) {
 		return `The postcode "${formattedPostcode}" looks too long, please try again`;
 	}
 
-	if (isAllowListedPostcode(formattedPostcode) || await validateLSOA(formattedPostcode)) {
+	const searchResult = isAllowListedPostcode(formattedPostcode) || await validateLSOA(formattedPostcode);
+	const searchTime = new Date().toISOString(); // Get the current timestamp
+
+	// Insert the postcode search into the database
+	await insertSearch(formattedPostcode, searchTime);
+
+	if (searchResult) {
 		return `The postcode "${formattedPostcode}" is in the service area`;
 	}
 

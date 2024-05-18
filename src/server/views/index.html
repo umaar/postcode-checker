@@ -25,6 +25,17 @@
 	<p class="info">
 		Use this form to find out whether a postcode is allowed or not.
 	</p>
+
+	{% if recentSearches %}
+	<div class="recent-searches">
+		<h2>Recently Searched Postcodes</h2>
+		<ul>
+			{% for search in recentSearches %}
+			<li><a href="/?postcode={{ search.postcode }}">{{ search.postcode }}</a> - searched {{ search.searchTime }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
 </div>
 
 {% endblock %}
