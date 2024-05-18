@@ -4,7 +4,8 @@
 	"type": "module",
 	"scripts": {
 		"test": "ava --node-arguments=\"--no-warnings --loader=quibble\" --verbose",
-		"start": "node --watch src/server/index.js"
+		"start": "node --watch src/server/index.js",
+		"init-db": "node src/server/utils/init-db.js"
 	},
 	"author": "Umar Hansa",
 	"xo": {
@@ -22,9 +23,12 @@
 	"dependencies": {
 		"compression": "^1.7.4",
 		"config": "^3.3.11",
+		"date-fns": "^3.6.0",
 		"express": "^4.19.2",
 		"get-port": "^7.1.0",
 		"node-fetch": "^3.3.2",
-		"nunjucks": "^3.2.4"
+		"nunjucks": "^3.2.4",
+		"sqlite": "^5.1.1",
+		"sqlite3": "^5.1.7"
 	}
 }
